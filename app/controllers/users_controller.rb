@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     end
     def show
     	@user = User.find(params[:id])
-      @devices = Device.all
+      @devices = Device.where(:user_id=>(params[:id]))
 
     end
     def edit
