@@ -1,4 +1,5 @@
 <h1>Showing Account for <%=@user.first_name %><%=@user.last_name %> </h1>
+<%= params.inspect %>
 <table class="table2" >
   <tbody>
     <tr>
@@ -33,3 +34,14 @@
     <br><%= link_to "edit this record", edit_user_path(@user) %>
 
   <br>  <%= "This user has the following devices"%>
+  <table class="table2" >
+     <tbody>
+  <% @devices.each do |n| %>
+  	<td><%= link_to "#{n.device_name}",device_path(n) %> </td>
+  <td><%= link_to "#{n.user.first_name}",user_path(n.user_id) %></td>
+  	<td><%= link_to "#{n.device_type}",device_path(n) %> </td>
+  	<td><%= link_to "Edit ", edit_device_path(n) %></td>
+  </tr>
+  <% end %>
+</tbody>
+</table>
